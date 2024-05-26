@@ -5,15 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class Player_Movement : MonoBehaviour
 {
+  //component variables//
   Rigidbody2D rb;
   Animator anim;
+
+  //Audio veriables//
   public AudioSource jump_Sound;
   public AudioSource Finish_Sound;
   public AudioSource Background_Sound;
   
+  //movement and jump variables//
   public float Move_speed = 10f;
   Vector2 movement;
-
   public float jump_force;
   public bool isground;
   bool isjump;
@@ -27,14 +30,15 @@ public class Player_Movement : MonoBehaviour
   
   void Update()
   {
-    //  Getting Movement input //
+    //Getting Movement input //
     float horizontal = Input.GetAxis("Horizontal");
     movement = new Vector2(horizontal,0);
-     // Stop ball from Goint Outside the Range//
+
+    //Stop ball from Goint Outside the Range//
     transform.position = new Vector2(Mathf.Clamp(transform.position.x,-39f,38f),transform.position.y);
         
-    // Getting jump input //
-    if(Input.GetKeyDown(KeyCode.Space) /*|| Input.GetKeyDown(KeyCode.Mouse0))*/ && isground == true){
+    //Getting jump input //
+    if((Input.GetKeyDown(KeyCode.Space)|| Input.GetKeyDown(KeyCode.Mouse0)) && isground == true){
       isjump = true;
     }
            
@@ -99,26 +103,6 @@ public class Player_Movement : MonoBehaviour
     }
     isjump = false;
        
-  }
-
- // Mobile controls //
-  public void stop(){
-    rb.AddForce(Vector2.zero);
-  }
-
-  public void right(){
-    rb.AddForce( Vector2.right*Move_speed*Time.fixedDeltaTime);
-  }
-   
-  public void left(){
-    rb.AddForce( Vector2.left*Move_speed*Time.fixedDeltaTime);
-  }
-  
-  public void jump1(){
-    if(isground == true){
-      isjump = true;
-      Jump();
-    }
   }
    
 }

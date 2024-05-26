@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Ball on top 2D.sln"
+    "dotnet.defaultSolution": "Ball-on-Top.sln"
 }
